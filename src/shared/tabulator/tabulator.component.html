@@ -1,0 +1,26 @@
+<div class="list-container"> 
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="table.dataSource" class="mat-elevation-z8">
+            <ng-container *ngFor="let column of table.dataColumns; let i = index" matColumnDef="{{column}}">
+                <th id="header_{{column}}" mat-sort-header mat-header-cell *matHeaderCellDef="let element">                    
+                    <a style="text-transform: capitalize">{{table.dataHeaders[i]}}</a>
+                </th>
+                <td mat-cell *matCellDef="let row; let rowIndex = index;" style="padding-left: 24px;">
+                    <div *ngIf="column!=='id'" style="display:flex; align-items:center; justify-content:center">
+                        <div 
+                            style="white-space: nowrap; overflow: hidden; padding: 0px 10px;" 
+                            matTooltip="{{row[column]}}">
+                            {{row[column]}}
+                        </div>
+                    </div>
+                    <div *ngIf="column==='id'" style="display:flex; align-items:center; justify-content:center">                        
+                        <button *ngFor="let actionItem of table.actionNameList" (click)="clickOption(actionItem.action, {id: row.id, row:row})">{{actionItem.label}}</button>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="table.dataColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: table.dataColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> 
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="data.detail.action=='getUserDetail'">    
+    <div class="modal-container">    
+        <div class="modal-item">
+            <img src="{{data.detail.picture.thumbnail}}">
+        </div>
+        <div class="modal-item">
+            <p><b>Nome completo:</b>
+            <p>{{data.detail.fullname}}</p>
+            <p><b>Data de nascimento:</b>
+            <p>{{data.detail.birthdate}}</p>
+            <p><b>Telefone:</b>
+            <p>{{data.detail.phone}}</p>
+            <p><b>Celular:</b>
+            <p>{{data.detail.cell}}</p>
+        </div>
+        <div class="modal-item">
+            <p><b>Endereço:</b></p>
+            <p>{{data.detail.location.street.name}}, {{data.detail.location.street.number}}</p>
+            <p>{{data.detail.location.state}} - {{data.detail.location.city}}</p>
+            <p>CEP - {{data.detail.location.postcode}}</p>
+        </div>
+    </div>
+    <div class="modal-buttonbar">
+        <button mat-button (click)="clickClose()">Fechar</button>
+    </div>
+</div>
+
+<div *ngIf="data.detail.action=='showMeSomething'">
+    <div class="modal-container">    
+        <div class="modal-item">
+            O que há para exibir? {{data.detail.msg}}
+        </div>
+    </div>
+    <div class="modal-buttonbar">
+        <button mat-button (click)="clickClose()">Fechar</button>
+    </div>
+</div>
